@@ -8,7 +8,7 @@
 
 </div>
 
-I'm an applied AI engineer specializing in **production RAG pipelines, agent workflows, and LLM evaluation**, built on a **data engineering** foundation. I'm AWS-certified in **Machine Learning, Data Engineering, and Solutions Architecture**, and an **NLP researcher** with a paper on transformer evaluations for multi-label conflict attribution.
+I'm an applied AI engineer specializing in **production RAG pipelines, agent workflows, and LLM evaluation**, built on a **data engineering** foundation. I'm AWS-certified in **Machine Learning, Data Engineering, and Solutions Architecture**, and a published **NLP researcher**: my paper benchmarks LLMs and encoder transformers on multi-label political event attribution.
 
 ```python
 class Mohiddin:
@@ -36,6 +36,7 @@ class Mohiddin:
 
 - **[adpilot](https://github.com/mohiddin7/adpilot)** ([live demo](https://adpilot.streamlit.app/)): ask a question in plain English and get guarded text-to-SQL, answers, and charts. It runs a nightly BigQuery pipeline, publishes a daily decision brief, and gates every change behind evals. Built with Pydantic AI, FastAPI, DuckDB, and Streamlit, using free LLMs only.
 - **[ai-message-sender](https://github.com/mohiddin7/ai-message-sender)**: a Chrome extension that schedules and automates prompts to Claude, ChatGPT, Gemini, and other AI chat sites.
+- **Automated event coding (research code)**: [code-satp](https://github.com/eteitelbaum/code-satp) is the open-source pipeline behind my paper. It fine-tunes transformer models to code event descriptions into multiple labels. [SATP_hosting](https://github.com/mohiddin7/SATP_hosting) is the app that hosts it.
 
 ## 🧰 Tech stack
 
@@ -55,6 +56,7 @@ class Mohiddin:
 - Agent workflows: tool calling, MCP, and agents that fail safely
 - LLM evaluation: golden sets, calibrated judges, and eval gates in CI
 - AI safety in practice: prompt-injection defenses, PII redaction, red-teaming
+- Evaluation methodology for NLP classifiers: benchmarking LLMs against fine-tuned encoder transformers
 - Data pipelines that give models something trustworthy to read
 
 ## 🏅 Certifications
@@ -67,7 +69,7 @@ class Mohiddin:
 
 ## 📄 Publications
 
-- **Transformer evaluations for multi-label conflict attribution**: NLP research paper.
+- Teitelbaum, E., Shaik, M.B., & Sharma, S.C. (2026). **[The Limits and Promise of Automated Event Coding: Evidence from the South Asia Terrorism Portal](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6163986)**. SSRN. LLM and encoder-transformer benchmarking for multi-label political event attribution, with an evaluation methodology. Code: [code-satp](https://github.com/eteitelbaum/code-satp).
 
 ## 📷 Fun fact
 
