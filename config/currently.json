@@ -1,0 +1,8 @@
+{
+  "user": "mohiddin7",
+  "window_days": [14, 60, 180],
+  "min_items": 2,
+  "max_items": 4,
+  "exclude": [],
+  "private_allowlist": {}
+}
