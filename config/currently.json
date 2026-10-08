@@ -1,7 +1,7 @@
 {
   "user": "mohiddin7",
-  "window_days": [14, 60, 180],
-  "min_items": 2,
+  "active_days": 7,
+  "chart_days": 14,
   "max_items": 4,
   "exclude": [],
   "token_env": ["PROFILE_READ_TOKEN", "ORG_READ_TOKEN"]

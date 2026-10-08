@@ -6,16 +6,22 @@ every branch. Each project gets a card (scripts/now_cards.py) with what it is,
 whether it is active, its latest commit, its language and a bar chart of my
 commits over the ranking window. Cards link to the project when it has a link.
 
-Public repos show up under their name and description. A private repo listed in
-the CURRENTLY_PRIVATE secret shows up under the label, blurb and optional url
-given there. Any other active private repo is folded into one anonymous "under
-wraps" card with only its language and commit counts. That secret is the only place
-private repo names live; nothing about them is committed to this public repo.
+Only projects I committed to in the last `active_days` (7) make the list; the
+count and the bars on each card cover the last `chart_days` (14).
 
-CURRENTLY_PRIVATE is JSON:
-  {"owner/repo": {"label": "...", "blurb": "...", "url": "...", "commits": false}}
-  {"owner/repo": {"hide": true}}   # never mention it, not even under wraps
-"commits": true also shows that private repo's latest commit message.
+Public repos show up under their name and description. A private repo listed in
+CURRENTLY_PRIVATE shows up under the label, blurb and optional url given there.
+Any other active private repo is folded into one anonymous "under wraps" card
+with only its language and commit counts.
+
+CURRENTLY_PRIVATE is a repo variable (or secret) holding JSON. Variables are
+printed in plain text in the public Actions logs, so key each entry by a short
+hash of the repo name rather than the name itself:
+  python3 scripts/update_currently.py --key owner/repo   ->  e.g. 3f9a1c0b7d2e
+  {"3f9a1c0b7d2e": {"label": "...", "blurb": "...", "url": "...", "commits": false}}
+  {"3f9a1c0b7d2e": {"hide": true}}   # never mention it, not even under wraps
+"commits": true also shows that private repo's latest commit message. Plain
+"owner/repo" keys still work, but only belong in a secret.
 """
 import hashlib
 import html
@@ -148,7 +154,7 @@ def when(moment, today, tz):
 
 def status(moment, today, tz):
     days = age(moment, today, tz)
-    return "active" if days < 7 else "recent" if days < 30 else "resting"
+    return "active" if days <= 2 else "week"
 
 
 def buckets(commits, days, now):
@@ -160,6 +166,15 @@ def buckets(commits, days, now):
         if 0 <= back < days:
             counts[BARS - 1 - int(back / size)] += 1
     return counts
+
+
+def key(full_name):
+    """The name-free key for a private repo in CURRENTLY_PRIVATE."""
+    return hashlib.sha256(full_name.lower().encode()).hexdigest()[:12]
+
+
+def alias_for(repo, private):
+    return private.get(key(repo["full_name"])) or private.get(repo["full_name"]) or {}
 
 
 def item_for(repo, commits, count, days, private, now, today, tz):
@@ -174,7 +189,7 @@ def item_for(repo, commits, count, days, private, now, today, tz):
         "message": None,
     }
     if repo["private"]:
-        alias = private[repo["full_name"]]
+        alias = alias_for(repo, private)
         base.update(name=plain(alias["label"]), blurb=plain(alias["blurb"]), url=alias.get("url"))
         show = alias.get("commits")
     else:
@@ -245,8 +260,8 @@ def write_cards(items, day_label):
         if old.name not in keep:
             old.unlink()
     caption = (
-        f"<sub>Updated {day_label} from my commits on every branch of my personal and org repos, private ones included. "
-        "Bars are commits over the window. I don't touch this; a workflow does.</sub>"
+        f"<sub>Updated {day_label}. A script reads my commits every morning, private repos included, "
+        "and draws these. If a card says active, I really was in there this week.</sub>"
     )
     return "\n".join(rows + ["", caption])
 
@@ -267,61 +282,61 @@ def list_repos(user, config):
     return list(repos.values())
 
 
+def quiet_week(day_label):
+    """No commits this week: clear the cards and say so, like a person would."""
+    for old in ASSETS.glob("now-*.svg"):
+        old.unlink()
+    return (
+        "<sub>Quiet week on GitHub. I'm probably reading papers, fighting a flaky eval or out with the camera. "
+        f"Checked {day_label}.</sub>"
+    )
+
+
 def main():
     config = json.loads(CONFIG.read_text(encoding="utf-8"))
     user = os.environ.get("GITHUB_REPOSITORY_OWNER") or config["user"]
     private = json.loads(os.environ.get("CURRENTLY_PRIVATE") or "{}")
     tz = ZoneInfo(os.environ.get("GREETING_TZ") or config.get("tz") or "America/New_York")
-    windows = sorted(config["window_days"])
-    max_items, min_items = config["max_items"], config["min_items"]
+    active_days, chart_days = config["active_days"], config["chart_days"]
+    max_items = config["max_items"]
     exclude = set(config["exclude"]) | {f"{user}/{user}"}
     show_wraps = config.get("under_wraps", True)
 
     now = datetime.now(timezone.utc)
     today = now.astimezone(tz).date()
-    widest = now - timedelta(days=windows[-1])
+    since = now - timedelta(days=max(active_days, chart_days))
+    active_since = now - timedelta(days=active_days)
+    chart_since = now - timedelta(days=chart_days)
 
-    activity = []
+    named, wrapped = [], []
     for repo, token in list_repos(user, config):
         if repo["fork"] or repo["archived"] or repo["full_name"] in exclude:
             continue
-        alias = private.get(repo["full_name"]) or {}
+        alias = alias_for(repo, private) if repo["private"] else {}
         if repo["private"] and (alias.get("hide") or (not alias.get("label") and not show_wraps)):
             continue
-        if parse_date(repo["pushed_at"]) < widest:
+        if parse_date(repo["pushed_at"]) < active_since:
             continue
-        commits = recent_commits(repo["full_name"], user, widest, token)
-        if commits:
-            activity.append((repo, commits, bool(repo["private"] and not alias.get("label"))))
+        commits = recent_commits(repo["full_name"], user, since, token)
+        week = sum(c["date"] >= active_since for c in commits)
+        if not week:
+            continue
+        count = sum(c["date"] >= chart_since for c in commits)
+        entry = (week, count, commits[0]["date"], repo, commits)
+        (wrapped if repo["private"] and not alias.get("label") else named).append(entry)
 
-    for days in windows:
-        cutoff = now - timedelta(days=days)
-        ranked = sorted(
-            (
-                (sum(c["date"] >= cutoff for c in commits), commits[0]["date"], repo, commits, wraps)
-                for repo, commits, wraps in activity
-            ),
-            key=lambda item: (item[0], item[1]),
-            reverse=True,
-        )
-        ranked = [item for item in ranked if item[0] > 0]
-        named = [item for item in ranked if not item[4]]
-        if len(named) >= min_items:
-            break
-
-    items = [item_for(repo, commits, count, days, private, now, today, tz) for count, _, repo, commits, _ in named[:max_items]]
-    wraps = under_wraps([(count, repo, commits) for count, _, repo, commits, w in ranked if w], days, now, today, tz)
+    named.sort(key=lambda e: e[:3], reverse=True)
+    items = [item_for(repo, commits, count, chart_days, private, now, today, tz) for _, count, _, repo, commits in named[:max_items]]
+    wraps = under_wraps([(count, repo, commits) for _, count, _, repo, commits in wrapped], chart_days, now, today, tz)
     if wraps:
         items.append(wraps)
-    if not items:
-        print("No recent activity found; leaving README.md unchanged.")
-        return
 
     text = README.read_text(encoding="utf-8")
     pattern = re.compile(re.escape(START) + r".*?" + re.escape(END), re.S)
     if not pattern.search(text):
         sys.exit(f"Markers {START} / {END} not found in README.md")
-    block = write_cards(items, f"{today:%b} {today.day}, {today.year}")
+    day_label = f"{today:%b} {today.day}, {today.year}"
+    block = write_cards(items, day_label) if items else quiet_week(day_label)
     updated = pattern.sub(lambda _: f"{START}\n{block}\n{END}", text)
     if updated == text:
         print("README.md already up to date.")
@@ -331,4 +346,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) == 3 and sys.argv[1] == "--key":
+        print(key(sys.argv[2]))
+    else:
+        main()
