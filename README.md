@@ -6,8 +6,13 @@
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&duration=2800&pause=900&color=58A6FF&center=true&vCenter=true&width=560&height=40&lines=hey.+you+found+my+profile.;i+build+RAG+pipelines+and+AI+agents;and+evals%2C+so+they+behave;currently+arguing+with+a+model+about+JSON;yes%2C+i+also+take+photos" alt="hey. you found my profile. i build RAG pipelines and AI agents, and evals, so they behave." />
 
-<!-- GREETING:START -->
-<i>Welcome. The coffee is imaginary but the code is real.</i>
+<!-- GREETING:START daypart=night date=2026-10-07 -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/profile-readme/assets/greeting-dark.svg?v=2026-10-07-night" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/profile-readme/assets/greeting-light.svg?v=2026-10-07-night" />
+  <img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/profile-readme/assets/greeting-light.svg?v=2026-10-07-night" alt="Late night on my side. The evals are asleep, I am not." />
+</picture>
+<a href="#how-this-page-works" title="Written by getmeme for my time of day and your GitHub theme">ⓘ</a>
 <!-- GREETING:END -->
 
 <br/><br/>
@@ -102,6 +107,14 @@ Also: [the paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6163986) �
 <a href="https://www.credly.com/badges/4d78e824-4a6f-4dbe-aa84-bbd9d43fe99c"><img src="https://img.shields.io/badge/AWS-Data%20Engineer%20Associate%20·%202024-2b3137?style=flat-square" alt="AWS Certified Data Engineer, Associate, 2024" /></a>
 <a href="https://www.credly.com/badges/34216190-94e5-4580-a564-934ccaf38586"><img src="https://img.shields.io/badge/AWS-Solutions%20Architect%20Associate%20·%202024-2b3137?style=flat-square" alt="AWS Certified Solutions Architect, Associate, 2024" /></a>
 
+### `$ cat fun_fact.txt`
+
+<img src="assets/aperture.gif" width="110" align="right" alt="A camera aperture opening and closing" />
+
+When I'm not building, I'm behind a camera. Honestly it's the same job: find the signal, ignore the noise, fix it in post.
+
+My photos live on Instagram at [@mylenspeak](https://instagram.com/mylenspeak).
+
 ### `$ cat FAQ.md`
 
 <details>
@@ -125,6 +138,17 @@ A camera has no context window to run out of.
 
 </details>
 
+<a name="how-this-page-works"></a>
+<details>
+<summary><b>ⓘ How this page works</b></summary>
+<br/>
+
+- **The greeting** is written by [getmeme](https://getmeme.warmhop.com), my own API. It changes with my time of day (US Eastern) and with your GitHub theme, dark or light. If the API is having a moment, a line I wrote fills in.
+- **`git log`** rebuilds every morning from my latest commits. Private projects show up under their public names.
+- **The snake** is my contribution calendar for the last year. It eats a little every day.
+
+</details>
+
 <div align="center">
-<sub>📷 off duty at <a href="https://instagram.com/mylenspeak">@mylenspeak</a> · greeting written daily by <a href="https://getmeme.warmhop.com">getmeme</a></sub>
+<sub>greeting by <a href="https://getmeme.warmhop.com">getmeme</a>, jokes by me</sub>
 </div>
