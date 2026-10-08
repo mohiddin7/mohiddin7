@@ -55,6 +55,7 @@ I build the thing I needed and couldn't find, then check who else needs it too.
 <table>
 <tr>
 <td width="50%" valign="top">
+<img src="https://raw.githubusercontent.com/mohiddin7/adpilot/main/docs/readme/hero.gif" width="100%" alt="adpilot dashboard: the overview, the AI insights feed and the chat answering a cost question" /><br/>
 <b><a href="https://github.com/mohiddin7/adpilot">adpilot</a></b> · <a href="https://adpilot.streamlit.app/">live demo</a><br/>
 Ask your ad data a question in plain English, get SQL and a chart back. Evals score it 89.8/100 and it passes all 41 red-team cases.
 </td>
@@ -65,10 +66,12 @@ Put the link on your resume and find out when someone actually clicks it. No mor
 </tr>
 <tr>
 <td width="50%" valign="top">
+<img src="assets/getmeme.gif" width="100%" alt="The getmeme site greeting a visitor by time of day and country, switching from dark to light theme, then the API docs" /><br/>
 <b><a href="https://getmeme.warmhop.com">getmeme</a></b> · live<br/>
 Prompt in, one short and safe line out. It wrote the greeting at the top of this page. GIFs and images are next.
 </td>
 <td width="50%" valign="top">
+<img src="assets/extension.gif" width="100%" alt="ai-message-sender: the popup teaching the input and send button, the four time modes, and the send history" /><br/>
 <b><a href="https://github.com/mohiddin7/ai-message-sender">ai-message-sender</a></b><br/>
 Schedules prompts to AI chat apps. I wanted it for one site, so I built a DOM picker and now it works on any page with a text box and a send button.
 </td>
