@@ -22,9 +22,9 @@
 <a href="https://github.com/mohiddin7/adpilot/blob/main/evals/reports/latest.md"><img src="https://img.shields.io/badge/adpilot%20evals-89.8%2F100-2b3137?style=flat-square" alt="adpilot evals 89.8 out of 100" /></a>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-dark.svg?v=9d4f30c6d6" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg?v=9d4f30c6d6" />
-  <img alt="My GitHub contribution calendar for the last year, with monthly counts, busiest day, streaks and active days, and a blue snake eating it" src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg?v=9d4f30c6d6" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-dark.svg?v=157de12360" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg?v=157de12360" />
+  <img alt="My GitHub contribution calendar for the last year, with monthly counts, busiest day, streaks and active days, and a blue snake eating it" src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg?v=157de12360" />
 </picture>
 
 
@@ -80,7 +80,7 @@ Schedules prompts to AI chat apps. I wanted it for one site, so I built a DOM pi
 </tr>
 </table>
 
-Also: [the paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6163986) · [code-satp](https://github.com/eteitelbaum/code-satp) · [SATP_hosting](https://github.com/mohiddin7/SATP_hosting) · [news summarization](https://github.com/meetdaxini/NLP-News-Summarization)
+Also: [the paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6163986) · [code-satp](https://github.com/eteitelbaum/code-satp) (fine-tuned transformers for event coding) · [SATP_hosting](https://github.com/mohiddin7/SATP_hosting) (Streamlit scraper and map of the incidents) · [news summarization](https://github.com/meetdaxini/NLP-News-Summarization)
 
 ### `$ git log --oneline`
 
