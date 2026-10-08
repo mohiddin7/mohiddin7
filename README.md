@@ -1,8 +1,8 @@
 <div align="center">
 
-<h1>Mohiddin</h1>
+<h1>Hi, I'm Mohiddin</h1>
 
-<b>Applied AI Engineer · RAG · AI agents · LLM evals</b>
+<b>AI Engineer · RAG · AI agents · LLM evals</b>
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&duration=2800&pause=900&color=58A6FF&center=true&vCenter=true&width=560&height=40&lines=hey.+you+found+my+profile.;i+build+RAG+pipelines+and+AI+agents;and+evals%2C+so+they+behave;currently+arguing+with+a+model+about+JSON;yes%2C+i+also+take+photos" alt="hey. you found my profile. i build RAG pipelines and AI agents, and evals, so they behave." />
 
@@ -22,6 +22,12 @@
 <a href="https://github.com/mohiddin7/adpilot/blob/main/evals/reports/latest.md"><img src="https://img.shields.io/badge/adpilot%20evals-89.8%2F100-2b3137?style=flat-square" alt="adpilot evals 89.8 out of 100" /></a>
 
 <picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg" />
+  <img alt="My GitHub contribution calendar for the last year, with monthly counts, busiest day, streaks and active days" src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg" />
+</picture>
+
+<picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/output/github-snake-dark.svg" />
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/output/github-snake.svg" />
   <img alt="My contribution calendar for the last year, slowly being eaten by a snake" src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/output/github-snake.svg" />
@@ -29,13 +35,13 @@
 
 </div>
 
-I'm an applied AI engineer. I build production RAG pipelines, AI agents, and the LLM evals that keep them honest. AWS certified in machine learning, data engineering and solutions architecture, and co-author of a 2026 paper benchmarking LLMs against encoder transformers.
+I'm an AI engineer. I build production RAG pipelines, AI agents, and the LLM evals that keep them honest. AWS certified in machine learning, data engineering and solutions architecture, and co-author of a 2026 paper benchmarking LLMs against encoder transformers.
 
 ### `$ whoami`
 
 ```python
 class Mohiddin:
-    role = "Applied AI Engineer"
+    role = "AI Engineer"
     focus = "ML and AI: RAG, agents, evals"
     certified = ["AWS ML", "AWS Data", "AWS Solutions Architect"]
     off_duty = "photography"
@@ -149,7 +155,7 @@ A camera has no context window to run out of.
 
 - **The greeting** is written by [getmeme](https://getmeme.warmhop.com), my own API. It changes with my time of day (US Eastern) and with your GitHub theme, dark or light. If the API is having a moment, a line I wrote fills in.
 - **`git log`** rebuilds every morning from my latest commits. Private projects show up under their public names.
-- **The snake** is my contribution calendar for the last year. It eats a little every day.
+- **The calendar** is redrawn every morning from my public contribution data, with the numbers printed on it. **The snake** under it eats the same calendar, a little every day.
 
 </details>
 
