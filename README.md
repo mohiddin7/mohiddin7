@@ -24,14 +24,9 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-dark.svg" />
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg" />
-  <img alt="My GitHub contribution calendar for the last year, with monthly counts, busiest day, streaks and active days" src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg" />
+  <img alt="My GitHub contribution calendar for the last year, with monthly counts, busiest day, streaks and active days, and a blue snake eating it" src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg" />
 </picture>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/output/github-snake.svg" />
-  <img alt="My contribution calendar for the last year, slowly being eaten by a snake" src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/output/github-snake.svg" />
-</picture>
 
 </div>
 
@@ -155,7 +150,7 @@ A camera has no context window to run out of.
 
 - **The greeting** is written by [getmeme](https://getmeme.warmhop.com), my own API. It changes with my time of day (US Eastern) and with your GitHub theme, dark or light. If the API is having a moment, a line I wrote fills in.
 - **`git log`** rebuilds every morning from my latest commits. Private projects show up under their public names.
-- **The calendar** is redrawn every morning from my public contribution data, with the numbers printed on it. **The snake** under it eats the same calendar, a little every day.
+- **The calendar** is redrawn every morning from my public contribution data, with the numbers printed on it. A snake eats every square I earned that year, then it all grows back.
 
 </details>
 
