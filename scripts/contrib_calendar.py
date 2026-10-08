@@ -32,6 +32,9 @@ THEMES = {
 FONT = "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif"
 CELL, GAP, LEFT, TOP = 10, 3, 32, 62
 STEP = CELL + GAP
+# The snake: head first. GitHub blue, a lighter head in dark mode and a deeper one in light mode.
+SNAKE = {"dark": ["#79c0ff", "#58a6ff", "#58a6ff", "#388bfd"], "light": ["#0550ae", "#0969da", "#0969da", "#218bff"]}
+STEP_SECONDS, PAUSE_SECONDS = 0.09, 3.0
 
 
 def fetch_graphql(user, token):
@@ -123,10 +126,67 @@ def layout(days):
     return cells, out
 
 
+def snake_path(cells):
+    """Walk the grid one cell at a time, sweeping left to right.
+
+    The next goal is the uneaten active cell in the leftmost column, the nearest row first, so
+    no cell is left behind for a long trip back. Active cells passed on the way are eaten then
+    too. Returns the (column, row) positions and the step at which each active cell is eaten.
+    """
+    targets = {(col, row) for col, row, _, count, _ in cells if count}
+    if not targets:
+        return [], {}
+    pos = min(targets)
+    path, eaten = [pos], {pos: 0}
+    targets.discard(pos)
+    while targets:
+        goal = min(targets, key=lambda t: (t[0], abs(t[1] - pos[1]), t[1]))
+        while pos != goal:
+            col, row = pos
+            if col != goal[0]:
+                col += 1 if goal[0] > col else -1
+            else:
+                row += 1 if goal[1] > row else -1
+            pos = (col, row)
+            path.append(pos)
+            if pos in targets:
+                targets.discard(pos)
+                eaten[pos] = len(path) - 1
+    return path, eaten
+
+
+def snake_css(path, eaten, cell_index, theme):
+    """CSS for the snake's moves and for each active cell turning empty when it is eaten."""
+    t = THEMES[theme]
+    loop = len(path) * STEP_SECONDS + PAUSE_SECONDS
+    pct = lambda step: step * STEP_SECONDS / loop * 100  # noqa: E731
+    frames = "".join(
+        f"{pct(i):.3f}%{{transform:translate({LEFT + c * STEP}px,{TOP + r * STEP}px)}}" for i, (c, r) in enumerate(path)
+    )
+    last_c, last_r = path[-1]
+    rules = [
+        f"@keyframes sn{{{frames}100%{{transform:translate({LEFT + last_c * STEP}px,{TOP + last_r * STEP}px)}}}}",
+        f".sn rect{{animation:sn {loop:.2f}s linear infinite backwards}}",
+    ]
+    for k in range(1, len(SNAKE[theme])):
+        rules.append(f".sn .s{k}{{animation-delay:{k * STEP_SECONDS:.2f}s}}")
+    for pos, step in sorted(eaten.items(), key=lambda item: item[1]):
+        i, level = cell_index[pos]
+        at = pct(step)
+        rules.append(
+            f"@keyframes e{i}{{0%,{at:.3f}%{{fill:{t['cells'][level]}}}{at + 0.001:.3f}%,100%{{fill:{t['cells'][0]}}}}}"
+            f".e{i}{{animation:e{i} {loop:.2f}s linear infinite}}"
+        )
+    rules.append("@media (prefers-reduced-motion: reduce){*{animation:none!important}.sn{display:none}}")
+    return "".join(rules)
+
+
 def svg(total, days, theme):
     t = THEMES[theme]
     s = stats(days)
     cells, months = layout(days)
+    path, eaten = snake_path(cells)
+    cell_index = {(col, row): (i, level) for i, (col, row, _, _, level) in enumerate(cells)}
     columns = max(c for c, *_ in cells) + 1
     width = LEFT + columns * STEP + 8
     grid_bottom = TOP + 7 * STEP
@@ -141,6 +201,7 @@ def svg(total, days, theme):
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" '
         f'role="img" aria-label="{e(summary)}"><title>{e(summary)}</title>',
+        f"<style>{snake_css(path, eaten, cell_index, theme)}</style>" if path else "",
         f'<g font-family="{FONT}">',
         f'<text x="{LEFT}" y="18" font-size="14" font-weight="600" fill="{t["text"]}">'
         f"{e(plural(total, 'contribution'))} in the last year</text>",
@@ -151,11 +212,21 @@ def svg(total, days, theme):
         parts.append(f'<text x="{x}" y="52" font-size="9" fill="{t["muted"]}">{count:,}</text>')
     for row, name in ((1, "Mon"), (3, "Wed"), (5, "Fri")):
         parts.append(f'<text x="0" y="{TOP + row * STEP + 9}" font-size="10" fill="{t["muted"]}">{name}</text>')
-    for col, row, d, count, level in cells:
+    for i, (col, row, d, count, level) in enumerate(cells):
+        css = f' class="e{i}"' if (col, row) in eaten else ""
         parts.append(
-            f'<rect x="{LEFT + col * STEP}" y="{TOP + row * STEP}" width="{CELL}" height="{CELL}" rx="2" '
+            f'<rect{css} x="{LEFT + col * STEP}" y="{TOP + row * STEP}" width="{CELL}" height="{CELL}" rx="2" '
             f'fill="{t["cells"][level]}"><title>{e(plural(count, "contribution"))} on {d:%b} {d.day}, {d.year}</title></rect>'
         )
+    if path:  # the snake, drawn over the cells; each segment is one step behind the one in front
+        parts.append('<g class="sn">')
+        for k, color in reversed(list(enumerate(SNAKE[theme]))):
+            size = CELL - k
+            parts.append(
+                f'<rect class="s{k}" x="{k / 2}" y="{k / 2}" width="{size}" height="{size}" rx="{3 if k == 0 else 2.5}" '
+                f'fill="{color}"/>'
+            )
+        parts.append("</g>")
     # Legend on its own row at the bottom right, like GitHub's: Less [5 swatches] More
     legend_y = grid_bottom + 6
     more_x = LEFT + columns * STEP - 26
