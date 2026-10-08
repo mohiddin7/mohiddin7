@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-"""Rewrite the "Currently working on" block of README.md from recent commits.
+"""Rebuild the "Building right now" cards in README.md from recent commits.
 
 Every repo the tokens can read counts: public and private, personal and org,
-every branch. Each line says what the project is, how busy it has been, when I
-last committed and, for public repos, what that commit was.
+every branch. Each project gets a card (scripts/now_cards.py) with what it is,
+whether it is active, its latest commit, its language and a bar chart of my
+commits over the ranking window. Cards link to the project when it has a link.
 
-Public repos show up as `name: description`. A private repo listed in the
-CURRENTLY_PRIVATE secret shows up under the label, blurb and optional url given
-there. Any other active private repo is folded into one anonymous "under wraps"
-line with only its language and commit counts. That secret is the only place
+Public repos show up under their name and description. A private repo listed in
+the CURRENTLY_PRIVATE secret shows up under the label, blurb and optional url
+given there. Any other active private repo is folded into one anonymous "under
+wraps" card with only its language and commit counts. That secret is the only place
 private repo names live; nothing about them is committed to this public repo.
 
 CURRENTLY_PRIVATE is JSON:
@@ -16,6 +17,7 @@ CURRENTLY_PRIVATE is JSON:
   {"owner/repo": {"hide": true}}   # never mention it, not even under wraps
 "commits": true also shows that private repo's latest commit message.
 """
+import hashlib
 import html
 import json
 import os
@@ -28,9 +30,14 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from now_cards import BARS, THEMES, card  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 README = ROOT / "README.md"
 CONFIG = ROOT / "config" / "currently.json"
+ASSETS = ROOT / "assets"
+RAW = "https://raw.githubusercontent.com/{repo}/{branch}/assets/{file}?v={version}"
 START, END = "<!-- CURRENTLY:START -->", "<!-- CURRENTLY:END -->"
 API = os.environ.get("GITHUB_API_URL", "https://api.github.com")
 MAX_BRANCHES = 30
@@ -90,27 +97,25 @@ def plain(text):
 
 
 def blurb(description, limit=110):
-    """First sentence of a repo description, capped at a word boundary, HTML-escaped."""
+    """First sentence of a repo description, capped at a word boundary."""
     text = plain(description)
     first = re.split(r"(?<=[.!?])\s", text, maxsplit=1)[0].rstrip(".")
     if len(first) > limit:
         first = first[: limit - 1].rsplit(" ", 1)[0].rstrip(" ,;:-") + "…"
-    return html.escape(first, quote=False)
+    return first
 
 
 # Commit subjects that say nothing about the work, or that I'd rather not print.
 SKIP_SUBJECT = re.compile(r"^(merge|wip\b|revert \"merge)|co-authored|claude", re.I)
 
 
-def subject(commits, limit=72):
-    """The newest commit subject worth printing, trimmed at a word boundary, and its commit."""
+def subject(commits):
+    """The newest commit worth quoting, as (subject, commit), or (None, None)."""
     for c in commits:
         text = plain(c["subject"])
         if c["merge"] or not text or SKIP_SUBJECT.search(text):
             continue
-        if len(text) > limit:
-            text = text[: limit - 1].rsplit(" ", 1)[0].rstrip(" ,;:-") + "…"
-        return html.escape(text, quote=False), c
+        return text, c
     return None, None
 
 
@@ -121,11 +126,15 @@ def span(days):
         n, unit = days // 7, "week"
     else:
         n, unit = days, "day"
-    return f"the last {unit}" if n == 1 else f"the last {n} {unit}s"
+    return f"last {unit}" if n == 1 else f"last {n} {unit}s"
+
+
+def age(moment, today, tz):
+    return (today - moment.astimezone(tz).date()).days
 
 
 def when(moment, today, tz):
-    days = (today - moment.astimezone(tz).date()).days
+    days = age(moment, today, tz)
     if days <= 0:
         return "today"
     if days == 1:
@@ -137,55 +146,109 @@ def when(moment, today, tz):
     return f"{days // 30} months ago"
 
 
-def dot(moment, today, tz):
-    days = (today - moment.astimezone(tz).date()).days
-    return "🟢" if days < 7 else "🟡" if days < 30 else "⚪"
+def status(moment, today, tz):
+    days = age(moment, today, tz)
+    return "active" if days < 7 else "recent" if days < 30 else "resting"
 
 
-def plural(n, word):
-    return f"{n} {word}" if n == 1 else f"{n} {word}s"
+def buckets(commits, days, now):
+    """Commit counts over the window in BARS equal slices, oldest first."""
+    counts = [0] * BARS
+    size = days / BARS
+    for c in commits:
+        back = (now - c["date"]).total_seconds() / 86400
+        if 0 <= back < days:
+            counts[BARS - 1 - int(back / size)] += 1
+    return counts
 
 
-def stats(languages, count, days, latest, today, tz, message=None):
-    """`message` is (subject, commit); its own date is used so the two never disagree."""
-    parts = [", ".join(languages)] if languages else []
-    parts.append(f"{plural(count, 'commit')} in {span(days)}")
-    text, commit = message or (None, None)
-    if text:
-        parts.append(f"latest {when(commit['date'], today, tz)}: <code>{text}</code>")
-    else:
-        parts.append(f"latest {when(latest, today, tz)}")
-    return "<br/><sub>" + " · ".join(parts) + "</sub>"
-
-
-def line_for(repo, commits, count, days, private, today, tz):
+def item_for(repo, commits, count, days, private, now, today, tz):
     latest = commits[0]["date"]
-    languages = [repo["language"]] if repo.get("language") else []
+    base = {
+        "language": repo.get("language"),
+        "count": count,
+        "span": span(days),
+        "when": when(latest, today, tz),
+        "status": status(latest, today, tz),
+        "buckets": buckets(commits, days, now),
+        "message": None,
+    }
     if repo["private"]:
         alias = private[repo["full_name"]]
-        label = f"**{html.escape(alias['label'], quote=False)}**"
-        if alias.get("url"):
-            label = f"[{label}]({alias['url']})"
-        text = html.escape(plain(alias["blurb"]), quote=False)
-        message = subject(commits) if alias.get("commits") else None
+        base.update(name=plain(alias["label"]), blurb=plain(alias["blurb"]), url=alias.get("url"))
+        show = alias.get("commits")
     else:
-        label = f"[**{repo['name']}**]({repo['html_url']})"
-        text = blurb(repo.get("description"))
-        message = subject(commits)
-    head = f"- {dot(latest, today, tz)} {label}" + (f": {text}" if text else "")
-    return head + stats(languages, count, days, latest, today, tz, message)
+        base.update(name=repo["name"], blurb=blurb(repo.get("description")), url=repo["html_url"])
+        show = True
+    if show:
+        text, commit = subject(commits)
+        if text:
+            base.update(message=text, when=when(commit["date"], today, tz))
+    return base
 
 
-def under_wraps(items, days, today, tz):
-    """One anonymous line for active private repos that have no public name yet."""
+def under_wraps(items, days, now, today, tz):
+    """One anonymous card for active private repos that have no public name yet."""
     if not items:
         return None
-    count = sum(c for c, _, _, _ in items)
-    latest = max(commits[0]["date"] for _, _, _, commits in items)
-    languages = sorted({repo["language"] for _, _, repo, _ in items if repo.get("language")})
-    what = "Something under wraps" if len(items) == 1 else f"{len(items)} things under wraps"
-    text = "no name yet, no screenshots, just commits"
-    return f"- 🔒 **{what}**: {text}" + stats(languages, count, days, latest, today, tz)
+    commits = sorted((c for _, _, cs in items for c in cs), key=lambda c: c["date"], reverse=True)
+    languages = sorted({repo["language"] for _, repo, _ in items if repo.get("language")})
+    return {
+        "name": "Something under wraps" if len(items) == 1 else f"{len(items)} things under wraps",
+        "blurb": "No name yet, no screenshots, just commits.",
+        "url": None,
+        "wraps": True,
+        "language": ", ".join(languages) or None,
+        "count": sum(count for count, _, _ in items),
+        "span": span(days),
+        "when": when(commits[0]["date"], today, tz),
+        "status": status(commits[0]["date"], today, tz),
+        "buckets": buckets(commits, days, now),
+        "message": None,
+    }
+
+
+def alt(item):
+    """Alt text carries everything the card shows, for screen readers and search engines."""
+    text = f"{item['name']}: {item['blurb']} {item['count']} commits in the {item['span']}, latest {item['when']}"
+    if item.get("message"):
+        text += f": {item['message']}"
+    if item.get("language"):
+        text += f". {item['language']}"
+    return html.escape(text, quote=True)
+
+
+def write_cards(items, day_label):
+    """Write assets/now-N-{theme}.svg, drop leftovers from a longer list, return the README block."""
+    repo = os.environ.get("GITHUB_REPOSITORY") or "mohiddin7/mohiddin7"
+    branch = os.environ.get("WORKLOG_BRANCH") or os.environ.get("GITHUB_REF_NAME") or "main"
+    ASSETS.mkdir(exist_ok=True)
+    keep, rows = set(), []
+    for n, item in enumerate(items, 1):
+        urls = {}
+        for theme in THEMES:
+            name = f"now-{n}-{theme}.svg"
+            body = card(item, theme)
+            (ASSETS / name).write_text(body, encoding="utf-8")
+            keep.add(name)
+            version = hashlib.sha256(body.encode()).hexdigest()[:10]
+            urls[theme] = RAW.format(repo=repo, branch=branch, file=name, version=version)
+        picture = (
+            "<picture>"
+            f'<source media="(prefers-color-scheme: dark)" srcset="{urls["dark"]}" />'
+            f'<source media="(prefers-color-scheme: light)" srcset="{urls["light"]}" />'
+            f'<img src="{urls["light"]}" width="100%" alt="{alt(item)}" />'
+            "</picture>"
+        )
+        rows.append(f'<a href="{html.escape(item["url"], quote=True)}">{picture}</a>' if item.get("url") else picture)
+    for old in ASSETS.glob("now-*.svg"):
+        if old.name not in keep:
+            old.unlink()
+    caption = (
+        f"<sub>Updated {day_label} from my commits on every branch of my personal and org repos, private ones included. "
+        "Bars are commits over the window. I don't touch this; a workflow does.</sub>"
+    )
+    return "\n".join(rows + ["", caption])
 
 
 def list_repos(user, config):
@@ -246,11 +309,11 @@ def main():
         if len(named) >= min_items:
             break
 
-    lines = [line_for(repo, commits, count, days, private, today, tz) for count, _, repo, commits, _ in named[:max_items]]
-    wraps = under_wraps([(c, d, r, cm) for c, d, r, cm, w in ranked if w], days, today, tz)
+    items = [item_for(repo, commits, count, days, private, now, today, tz) for count, _, repo, commits, _ in named[:max_items]]
+    wraps = under_wraps([(count, repo, commits) for count, _, repo, commits, w in ranked if w], days, now, today, tz)
     if wraps:
-        lines.append(wraps)
-    if not lines:
+        items.append(wraps)
+    if not items:
         print("No recent activity found; leaving README.md unchanged.")
         return
 
@@ -258,12 +321,13 @@ def main():
     pattern = re.compile(re.escape(START) + r".*?" + re.escape(END), re.S)
     if not pattern.search(text):
         sys.exit(f"Markers {START} / {END} not found in README.md")
-    updated = pattern.sub(lambda _: f"{START}\n" + "\n".join(lines) + f"\n{END}", text)
+    block = write_cards(items, f"{today:%b} {today.day}, {today.year}")
+    updated = pattern.sub(lambda _: f"{START}\n{block}\n{END}", text)
     if updated == text:
         print("README.md already up to date.")
         return
     README.write_text(updated, encoding="utf-8")
-    print(f"Updated README.md with {len(lines)} item(s).")
+    print(f"Updated README.md with {len(items)} card(s).")
 
 
 if __name__ == "__main__":

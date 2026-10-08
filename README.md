@@ -32,6 +32,11 @@
 
 I'm an AI engineer. I build production RAG pipelines, AI agents, and the LLM evals that keep them honest. AWS certified in machine learning, data engineering and solutions architecture, and co-author of a 2026 paper benchmarking LLMs against encoder transformers.
 
+### 🔨 What I'm building right now
+
+<!-- CURRENTLY:START -->
+<!-- CURRENTLY:END -->
+
 ### `$ whoami`
 
 ```python
@@ -81,17 +86,6 @@ Schedules prompts to AI chat apps. I wanted it for one site, so I built a DOM pi
 </table>
 
 Also: [the paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6163986) · [code-satp](https://github.com/eteitelbaum/code-satp) (fine-tuned transformers for event coding) · [SATP_hosting](https://github.com/mohiddin7/SATP_hosting) (Streamlit scraper and map of the incidents) · [news summarization](https://github.com/meetdaxini/NLP-News-Summarization)
-
-### `$ git log --oneline`
-
-<!-- CURRENTLY:START -->
-- [**adpilot**](https://github.com/mohiddin7/adpilot): AI analyst for ad spend: ask in plain English, get guarded SQL, answers and charts
-- [**Warmhop Link Tracker**](https://warmhop.com/try): A link tracker for job seekers: put it on your resume and see when someone clicks
-- [**getmeme**](https://getmeme.warmhop.com): An API that turns a prompt into one short, safety-checked line of copy
-- **IndexCase**: Threat intelligence for AI agents that traces how prompt injection spreads, in design
-<!-- CURRENTLY:END -->
-
-<sub>Rebuilt every hour from my commits on every branch, personal and org repos. 🟢 this week, 🟡 lately, ⚪ resting. I don't touch it.</sub>
 
 ### `$ cat stack.json`
 
@@ -149,7 +143,7 @@ A camera has no context window to run out of.
 <br/>
 
 - **The greeting** is written by [getmeme](https://getmeme.warmhop.com), my own API. It changes with my time of day (US Eastern) and with your GitHub theme, dark or light. If the API is having a moment, a line I wrote fills in.
-- **`git log`** rebuilds every hour from my commits across my own and my org's repos, private ones included. Private projects show up under their public names, and anything without one yet is just "under wraps".
+- **What I'm building right now** is redrawn every morning from my commits on every branch of my personal and org repos, private ones included. Each card shows whether the project is active, my latest commit, the language and a bar chart of my commits. Private projects show up under their public names, and anything without one yet is just "under wraps".
 - **The calendar** is redrawn every morning from my public contribution data, with the numbers printed on it. A snake eats every square I earned that year, then it all grows back.
 
 </details>

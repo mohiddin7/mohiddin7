@@ -27,7 +27,7 @@ jobs:
           GREETING_TZ: ${{ vars.GREETING_TZ }}
         run: python3 scripts/greeting.py
 
-      - name: Work log
+      - name: Building right now, and the contribution calendar
         env:
           GITHUB_TOKEN: ${{ github.token }}
           # Read-only tokens and the private-repo labels. All three are repo secrets,
@@ -36,12 +36,6 @@ jobs:
           ORG_READ_TOKEN: ${{ secrets.ORG_READ_TOKEN }}
           CURRENTLY_PRIVATE: ${{ secrets.CURRENTLY_PRIVATE }}
           GREETING_TZ: ${{ vars.GREETING_TZ }}
-        # Every run, so it follows what I'm committing. It only changes when my commits do.
-        run: python3 scripts/update_currently.py || echo "::warning::Work log not updated"
-
-      - name: Contribution calendar
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
         # Once a day: the first run from 10:00 UTC whose calendar doesn't show today yet.
         # The window runs to 13:59 because scheduled runs are sometimes late. Manual runs always redraw.
         run: |
@@ -49,9 +43,10 @@ jobs:
           hour="$(date -u +%-H)"
           if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] || \
              { [ "$hour" -ge 10 ] && [ "$hour" -le 13 ] && ! grep -q "on $today</title>" assets/calendar-dark.svg; }; then
+            python3 scripts/update_currently.py || echo "::warning::Project cards not updated"
             python3 scripts/contrib_calendar.py || echo "::warning::Contribution calendar not updated"
           else
-            echo "Calendar already drawn today, or not its time yet; skipping."
+            echo "Already drawn today, or not its time yet; skipping."
           fi
 
       - name: Commit if anything changed
@@ -64,5 +59,5 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Refresh greeting, work log and calendar"
+          git commit -m "Refresh greeting, project cards and calendar"
           git push
