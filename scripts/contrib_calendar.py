@@ -8,6 +8,7 @@ under each month, the busiest day, the longest and current streaks, and active d
 Data comes from the GraphQL API with the workflow's token. If that fails, it falls
 back to the public contributions page. If both fail, the existing SVGs are left alone.
 """
+import hashlib
 import html
 import json
 import os
@@ -19,7 +20,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from update_currently import CONFIG, ROOT  # noqa: E402
+from update_currently import CONFIG, README, ROOT  # noqa: E402
 
 ASSETS = ROOT / "assets"
 QUERY = """query($login: String!) { user(login: $login) { contributionsCollection { contributionCalendar {
@@ -177,7 +178,8 @@ def snake_css(path, eaten, cell_index, theme):
             f"@keyframes e{i}{{0%,{at:.3f}%{{fill:{t['cells'][level]}}}{at + 0.001:.3f}%,100%{{fill:{t['cells'][0]}}}}}"
             f".e{i}{{animation:e{i} {loop:.2f}s linear infinite}}"
         )
-    rules.append("@media (prefers-reduced-motion: reduce){*{animation:none!important}.sn{display:none}}")
+    # Reduced motion: no movement, the snake stays parked where its path ends (see svg()).
+    rules.append("@media (prefers-reduced-motion: reduce){*{animation:none!important}}")
     return "".join(rules)
 
 
@@ -222,9 +224,11 @@ def svg(total, days, theme):
         parts.append('<g class="sn">')
         for k, color in reversed(list(enumerate(SNAKE[theme]))):
             size = CELL - k
+            # Without animation (reduced motion) a segment sits here: parked at the end of the path.
+            c, r = path[max(0, len(path) - 1 - k)]
             parts.append(
                 f'<rect class="s{k}" x="{k / 2}" y="{k / 2}" width="{size}" height="{size}" rx="{3 if k == 0 else 2.5}" '
-                f'fill="{color}"/>'
+                f'transform="translate({LEFT + c * STEP},{TOP + r * STEP})" fill="{color}"/>'
             )
         parts.append("</g>")
     # Legend on its own row at the bottom right, like GitHub's: Less [5 swatches] More
@@ -249,6 +253,24 @@ def svg(total, days, theme):
     return "".join(parts)
 
 
+def stamp_readme():
+    """Put a content hash on the calendar image URLs in README.md.
+
+    The image URLs never change otherwise, so GitHub's image proxy can keep serving an old
+    calendar for a while. A new ?v= whenever the SVGs change makes it fetch the new one.
+    Returns True if README.md changed.
+    """
+    if not README.exists():
+        return False
+    digest = hashlib.sha256(b"".join((ASSETS / f"calendar-{t}.svg").read_bytes() for t in THEMES)).hexdigest()[:10]
+    text = README.read_text(encoding="utf-8")
+    updated = re.sub(r"(assets/calendar-(?:dark|light)\.svg)(\?v=[0-9a-f]+)?", rf"\g<1>?v={digest}", text)
+    if updated == text:
+        return False
+    README.write_text(updated, encoding="utf-8")
+    return True
+
+
 def main():
     user = os.environ.get("GITHUB_REPOSITORY_OWNER") or json.loads(CONFIG.read_text(encoding="utf-8"))["user"]
     try:
@@ -269,7 +291,11 @@ def main():
         if not path.exists() or path.read_text(encoding="utf-8") != new:
             path.write_text(new, encoding="utf-8")
             changed = True
-    print(f"Calendar from {source}: {total} contributions over {len(days)} days ({'updated' if changed else 'unchanged'}).")
+    stamped = stamp_readme()
+    print(
+        f"Calendar from {source}: {total} contributions over {len(days)} days "
+        f"({'updated' if changed else 'unchanged'}{', README image links re-stamped' if stamped else ''})."
+    )
 
 
 if __name__ == "__main__":
