@@ -22,8 +22,11 @@ jobs:
       - name: Rebuild the block from recent commits
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          # Optional read-only fine-grained token, only needed for allowlisted private repos.
+          # Optional read-only tokens and the private-repo labels. All three are
+          # repo secrets, so private repo names never appear in this public repo.
           PROFILE_READ_TOKEN: ${{ secrets.PROFILE_READ_TOKEN }}
+          ORG_READ_TOKEN: ${{ secrets.ORG_READ_TOKEN }}
+          CURRENTLY_PRIVATE: ${{ secrets.CURRENTLY_PRIVATE }}
         run: python3 scripts/update_currently.py
 
       - name: Commit if the block changed
@@ -35,5 +38,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "chore: refresh currently working on"
+          git commit -m "Refresh currently working on"
           git push

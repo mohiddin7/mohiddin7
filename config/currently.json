@@ -4,5 +4,5 @@
   "min_items": 2,
   "max_items": 4,
   "exclude": [],
-  "private_allowlist": {}
+  "token_env": ["PROFILE_READ_TOKEN", "ORG_READ_TOKEN"]
 }
