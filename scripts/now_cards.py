@@ -15,17 +15,18 @@ THEMES = {
     "dark": {
         "bg": "#0d1117", "border": "#30363d", "text": "#e6edf3", "muted": "#8b949e", "code": "#c9d1d9",
         "chip": "#161b22", "empty": "#21262d",
-        "status": {"active": "#3fb950", "recent": "#d29922", "resting": "#6e7681"},
+        "status": {"active": "#3fb950", "week": "#d29922"},
         "bars": ["#0e4429", "#006d32", "#26a641", "#39d353"],
     },
     "light": {
         "bg": "#ffffff", "border": "#d0d7de", "text": "#1f2328", "muted": "#59636e", "code": "#1f2328",
         "chip": "#f6f8fa", "empty": "#ebedf0",
-        "status": {"active": "#1a7f37", "recent": "#9a6700", "resting": "#8c959f"},
+        "status": {"active": "#1a7f37", "week": "#9a6700"},
         "bars": ["#9be9a8", "#40c463", "#30a14e", "#216e39"],
     },
 }
-STATUS_WORD = {"active": "ACTIVE", "recent": "THIS MONTH", "resting": "RESTING"}
+# ACTIVE: committed in the last two days. THIS WEEK: earlier in the week.
+STATUS_WORD = {"active": "ACTIVE", "week": "THIS WEEK"}
 
 # GitHub's own language colors, for the few languages I actually use.
 LANGUAGE_COLORS = {

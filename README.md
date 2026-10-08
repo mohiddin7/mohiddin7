@@ -73,8 +73,8 @@ I build the thing I needed and couldn't find, then check who else needs it too.
 Ask your ad data a question in plain English, get SQL and a chart back. Evals score it 89.8/100 and it passes all 41 red-team cases.
 </td>
 <td width="50%" valign="top">
-<img src="assets/warmhop.gif" width="100%" alt="Warmhop Link Tracker: a test link is emailed, a security bot clicks it first, then the real click shows up in the live log as a person" /><br/>
-<b><a href="https://warmhop.com/try">Warmhop Link Tracker</a></b> · live<br/>
+<img src="assets/warmhop.gif" width="100%" alt="warmhop Link Tracker: a test link is emailed, a security bot clicks it first, then the real click shows up in the live log as a person" /><br/>
+<b><a href="https://warmhop.com/try">warmhop Link Tracker</a></b> · live<br/>
 Put the link on your resume and find out when someone actually clicks it. No more guessing.
 </td>
 </tr>
@@ -150,7 +150,7 @@ A camera has no context window to run out of.
 <br/>
 
 - **The greeting** is written by [getmeme](https://getmeme.warmhop.com), my own API. It changes with my time of day (US Eastern) and with your GitHub theme, dark or light. If the API is having a moment, a line I wrote fills in.
-- **What I'm building right now** is redrawn every morning from my commits on every branch of my personal and org repos, private ones included. Each card shows whether the project is active, my latest commit, the language and a bar chart of my commits. Private projects show up under their public names, and anything without one yet is just "under wraps".
+- **What I'm building right now** is redrawn every morning from my commits on every branch of my personal and org repos, private ones included. Only projects I touched in the last 7 days get a card; the bars show the last 2 weeks. Private projects appear under their public names, and anything without one yet is just "under wraps".
 - **The calendar** is redrawn every morning from my public contribution data, with the numbers printed on it. A snake eats every square I earned that year, then it all grows back.
 
 </details>
