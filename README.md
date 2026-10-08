@@ -60,6 +60,7 @@ I build the thing I needed and couldn't find, then check who else needs it too.
 Ask your ad data a question in plain English, get SQL and a chart back. Evals score it 89.8/100 and it passes all 41 red-team cases.
 </td>
 <td width="50%" valign="top">
+<img src="assets/warmhop.gif" width="100%" alt="Warmhop Link Tracker: a test link is emailed, a security bot clicks it first, then the real click shows up in the live log as a person" /><br/>
 <b><a href="https://warmhop.com/try">Warmhop Link Tracker</a></b> · live<br/>
 Put the link on your resume and find out when someone actually clicks it. No more guessing.
 </td>
