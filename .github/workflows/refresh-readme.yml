@@ -1,0 +1,56 @@
+name: Refresh README
+
+on:
+  schedule:
+    # Hourly so the greeting follows my time of day. The API is only called when the daypart changes.
+    - cron: "7 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-readme
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Greeting for my time of day
+        env:
+          GETMEME_API_KEY: ${{ secrets.GETMEME_API_KEY }}
+          GETMEME_URL: ${{ vars.GETMEME_URL }}
+          GREETING_TZ: ${{ vars.GREETING_TZ }}
+        run: python3 scripts/greeting.py
+
+      - name: Currently working on
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          # Optional read-only tokens and the private-repo labels. All three are
+          # repo secrets, so private repo names never appear in this public repo.
+          PROFILE_READ_TOKEN: ${{ secrets.PROFILE_READ_TOKEN }}
+          ORG_READ_TOKEN: ${{ secrets.ORG_READ_TOKEN }}
+          CURRENTLY_PRIVATE: ${{ secrets.CURRENTLY_PRIVATE }}
+        # Once a morning (10:00 UTC) or on a manual run; the hourly runs are for the greeting.
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] || [ "$(date -u +%H)" = "10" ]; then
+            python3 scripts/update_currently.py
+          else
+            echo "Not the morning run; skipping."
+          fi
+
+      - name: Commit if anything changed
+        run: |
+          if git diff --quiet -- README.md assets; then
+            echo "No change."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md assets/greeting-dark.svg assets/greeting-light.svg
+          git commit -m "Refresh greeting and work log"
+          git push
