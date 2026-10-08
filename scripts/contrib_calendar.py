@@ -12,6 +12,7 @@ import hashlib
 import html
 import json
 import os
+import random
 import re
 import sys
 import urllib.error
@@ -35,7 +36,7 @@ CELL, GAP, LEFT, TOP = 10, 3, 32, 62
 STEP = CELL + GAP
 # The snake: head first. GitHub blue, a lighter head in dark mode and a deeper one in light mode.
 SNAKE = {"dark": ["#79c0ff", "#58a6ff", "#58a6ff", "#388bfd"], "light": ["#0550ae", "#0969da", "#0969da", "#218bff"]}
-STEP_SECONDS, PAUSE_SECONDS = 0.09, 3.0
+STEP_SECONDS, PAUSE_SECONDS = 0.07, 3.0
 
 
 def fetch_graphql(user, token):
@@ -127,24 +128,28 @@ def layout(days):
     return cells, out
 
 
-def snake_path(cells):
-    """Walk the grid one cell at a time, sweeping left to right.
+def snake_path(cells, seed="", choices=3):
+    """Walk the grid one cell at a time, eating in a random order.
 
-    The next goal is the uneaten active cell in the leftmost column, the nearest row first, so
-    no cell is left behind for a long trip back. Active cells passed on the way are eaten then
-    too. Returns the (column, row) positions and the step at which each active cell is eaten.
+    The next goal is picked at random from the `choices` nearest uneaten active cells, and each
+    step randomly goes across or down when both would get closer, so the snake wanders instead
+    of sweeping in order. The seed (the calendar's last date) makes the route change every day
+    but stay the same for reruns on the same data. Active cells passed on the way are eaten
+    then too. Returns the (column, row) positions and the step at which each cell is eaten.
     """
+    rng = random.Random(f"snake:{seed}")
     targets = {(col, row) for col, row, _, count, _ in cells if count}
     if not targets:
         return [], {}
-    pos = min(targets)
+    pos = rng.choice(sorted(targets))
     path, eaten = [pos], {pos: 0}
     targets.discard(pos)
     while targets:
-        goal = min(targets, key=lambda t: (t[0], abs(t[1] - pos[1]), t[1]))
+        nearest = sorted(targets, key=lambda t: (abs(t[0] - pos[0]) + abs(t[1] - pos[1]), t))[:choices]
+        goal = rng.choice(nearest)
         while pos != goal:
             col, row = pos
-            if col != goal[0]:
+            if col != goal[0] and (row == goal[1] or rng.random() < 0.5):
                 col += 1 if goal[0] > col else -1
             else:
                 row += 1 if goal[1] > row else -1
@@ -187,7 +192,7 @@ def svg(total, days, theme):
     t = THEMES[theme]
     s = stats(days)
     cells, months = layout(days)
-    path, eaten = snake_path(cells)
+    path, eaten = snake_path(cells, seed=days[-1][0].isoformat())
     cell_index = {(col, row): (i, level) for i, (col, row, _, _, level) in enumerate(cells)}
     columns = max(c for c, *_ in cells) + 1
     width = LEFT + columns * STEP + 8
