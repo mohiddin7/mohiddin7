@@ -84,10 +84,10 @@ Also: [the paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6163986) Â
 ### `$ git log --oneline`
 
 <!-- CURRENTLY:START -->
+- [**adpilot**](https://github.com/mohiddin7/adpilot): AI analyst for ad spend: ask in plain English, get guarded SQL, answers and charts
 - [**Warmhop Link Tracker**](https://warmhop.com/try): A link tracker for job seekers: put it on your resume and see when someone clicks
 - **IndexCase**: Threat intelligence for AI agents that traces how prompt injection spreads, in design
 - [**getmeme**](https://getmeme.warmhop.com): An API that turns a prompt into one short, safety-checked line of copy
-- [**adpilot**](https://github.com/mohiddin7/adpilot): AI analyst for ad spend: ask in plain English, get guarded SQL, answers and charts
 <!-- CURRENTLY:END -->
 
 <sub>Rebuilt every morning from my latest commits. I don't touch it.</sub>
