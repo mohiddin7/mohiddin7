@@ -1,4 +1,4 @@
-name: Update "currently working on"
+name: Refresh README
 
 on:
   schedule:
@@ -9,17 +9,23 @@ permissions:
   contents: write
 
 concurrency:
-  group: update-currently
+  group: refresh-readme
   cancel-in-progress: true
 
 jobs:
-  update:
+  refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
 
-      - name: Rebuild the block from recent commits
+      - name: Greeting of the day
+        env:
+          GETMEME_API_KEY: ${{ secrets.GETMEME_API_KEY }}
+          GETMEME_URL: ${{ vars.GETMEME_URL }}
+        run: python3 scripts/greeting.py
+
+      - name: Currently working on
         env:
           GITHUB_TOKEN: ${{ github.token }}
           # Optional read-only tokens and the private-repo labels. All three are
@@ -29,7 +35,7 @@ jobs:
           CURRENTLY_PRIVATE: ${{ secrets.CURRENTLY_PRIVATE }}
         run: python3 scripts/update_currently.py
 
-      - name: Commit if the block changed
+      - name: Commit if anything changed
         run: |
           if git diff --quiet -- README.md; then
             echo "No change."
@@ -38,5 +44,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "Refresh currently working on"
+          git commit -m "Refresh greeting and work log"
           git push

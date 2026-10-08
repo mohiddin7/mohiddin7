@@ -1,15 +1,38 @@
-# Mohiddin
+<div align="center">
 
-### Applied AI Engineer · RAG pipelines · Agent workflows · LLM evaluation
+<h1>Mohiddin</h1>
 
-I'm an applied AI engineer. I build production RAG pipelines, agent workflows and LLM evaluations on top of a data engineering foundation. I'm AWS certified in machine learning, data engineering and solutions architecture, and I co-authored a 2026 paper that benchmarks LLMs and encoder transformers on multi-label political event attribution.
+<b>Applied AI Engineer · RAG · AI agents · LLM evals</b>
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&duration=2800&pause=900&color=58A6FF&center=true&vCenter=true&width=560&height=40&lines=hey.+you+found+my+profile.;i+build+RAG+pipelines+and+AI+agents;and+evals%2C+so+they+behave;currently+arguing+with+a+model+about+JSON;yes%2C+i+also+take+photos" alt="hey. you found my profile. i build RAG pipelines and AI agents, and evals, so they behave." />
+
+<!-- GREETING:START -->
+<i>Welcome. The coffee is imaginary but the code is real.</i>
+<!-- GREETING:END -->
+
+<br/><br/>
+
+<a href="#certs"><img src="https://img.shields.io/badge/AWS%20certified-x3-2b3137?style=flat-square" alt="AWS certified x3" /></a>
+<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6163986"><img src="https://img.shields.io/badge/paper-2026-2b3137?style=flat-square" alt="Paper, 2026" /></a>
+<a href="https://github.com/mohiddin7/adpilot/blob/main/evals/reports/latest.md"><img src="https://img.shields.io/badge/adpilot%20evals-89.8%2F100-2b3137?style=flat-square" alt="adpilot evals 89.8 out of 100" /></a>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/output/github-snake.svg" />
+  <img alt="My contribution calendar for the last year, slowly being eaten by a snake" src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/output/github-snake.svg" />
+</picture>
+
+</div>
+
+I'm an applied AI engineer. I build production RAG pipelines, AI agents, and the LLM evals that keep them honest. AWS certified in machine learning, data engineering and solutions architecture, and co-author of a 2026 paper benchmarking LLMs against encoder transformers.
+
+### `$ whoami`
 
 ```python
 class Mohiddin:
     role = "Applied AI Engineer"
-    builds = ["production RAG", "agent workflows", "LLM evals"]
-    foundation = "data engineering"
-    certified = ["AWS ML Engineer", "AWS Data Engineer", "AWS Solutions Architect"]
+    focus = "ML and AI: RAG, agents, evals"
+    certified = ["AWS ML", "AWS Data", "AWS Solutions Architect"]
     off_duty = "photography"
 
     def ship(self, change):
@@ -18,13 +41,38 @@ class Mohiddin:
         # evals failed, so nothing ships
 ```
 
-## How I build
+I build the thing I needed and couldn't find, then check who else needs it too.
 
-I like building useful things. Most of what I make starts with a problem I ran into myself. I own the problem, check whether other people have it too, and then build it for them. I try to solve the bigger picture instead of my one case.
+<img src="assets/eval-run.gif" width="600" alt="Terminal: an eval suite fails on explaining RAG without a whiteboard, gets coffee, passes, and ships" />
 
-[ai-message-sender](https://github.com/mohiddin7/ai-message-sender) is a good example. I needed to send scheduled messages to AI chat apps from my browser. I could have hard-coded a few sites. Instead I built a DOM picker, so it works on any website that has an input box and a send button.
+### `$ ls projects/`
 
-## Currently working on
+<table>
+<tr>
+<td width="50%" valign="top">
+<b><a href="https://github.com/mohiddin7/adpilot">adpilot</a></b> · <a href="https://adpilot.streamlit.app/">live demo</a><br/>
+Ask your ad data a question in plain English, get SQL and a chart back. Evals score it 89.8/100 and it passes all 41 red-team cases.
+</td>
+<td width="50%" valign="top">
+<b><a href="https://warmhop.com/try">Warmhop Link Tracker</a></b> · live<br/>
+Put the link on your resume and find out when someone actually clicks it. No more guessing.
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<b><a href="https://getmeme.warmhop.com">getmeme</a></b> · live<br/>
+Prompt in, one short and safe line out. It wrote the greeting at the top of this page. GIFs and images are next.
+</td>
+<td width="50%" valign="top">
+<b><a href="https://github.com/mohiddin7/ai-message-sender">ai-message-sender</a></b><br/>
+Schedules prompts to AI chat apps. I wanted it for one site, so I built a DOM picker and now it works on any page with a text box and a send button.
+</td>
+</tr>
+</table>
+
+Also: [the paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6163986) · [code-satp](https://github.com/eteitelbaum/code-satp) · [SATP_hosting](https://github.com/mohiddin7/SATP_hosting) · [news summarization](https://github.com/meetdaxini/NLP-News-Summarization)
+
+### `$ git log --oneline`
 
 <!-- CURRENTLY:START -->
 - [**Warmhop Link Tracker**](https://warmhop.com/try): A link tracker for job seekers: put it on your resume and see when someone clicks
@@ -33,48 +81,50 @@ I like building useful things. Most of what I make starts with a problem I ran i
 - [**adpilot**](https://github.com/mohiddin7/adpilot): AI analyst for ad spend: ask in plain English, get guarded SQL, answers and charts
 <!-- CURRENTLY:END -->
 
-<sub>Generated daily from my recent commits.</sub>
+<sub>Rebuilt every morning from my latest commits. I don't touch it.</sub>
 
-## Projects
+### `$ cat stack.json`
 
-- **[adpilot](https://github.com/mohiddin7/adpilot)** ([live demo](https://adpilot.streamlit.app/)): ask about ad spend in plain English and get guarded SQL, answers and charts. Its nightly eval scores 89.8 out of 100, with all 41 red-team cases passed, and every change runs through an eval gate.
-- **[Warmhop Link Tracker](https://warmhop.com/try)**: a link tracker for job seekers. Put the link on your resume and you see when someone clicks it. It's live now.
-- **[getmeme](https://getmeme.warmhop.com)**: an API that turns a prompt into one short, safety-checked line of copy. Text lines work today. GIF and image versions are in progress.
-- **[ai-message-sender](https://github.com/mohiddin7/ai-message-sender)**: a Chrome extension that schedules prompts to Claude, ChatGPT, Gemini and any other site with an input box and a send button.
-- **[code-satp](https://github.com/eteitelbaum/code-satp)** and **[SATP_hosting](https://github.com/mohiddin7/SATP_hosting)**: the pipeline and the hosted app from the same project as my paper. Transformer models that code event descriptions into multiple labels.
-- **[News summarization](https://github.com/meetdaxini/NLP-News-Summarization)**: fine-tuned summarization models behind a Streamlit app.
+<table>
+<tr><td><code>"lang"</code></td><td><img src="https://img.shields.io/badge/Python-2b3137?style=flat-square&logo=python&logoColor=3776AB" alt="Python" /> <img src="https://img.shields.io/badge/SQL-2b3137?style=flat-square" alt="SQL" /> <img src="https://img.shields.io/badge/TypeScript-2b3137?style=flat-square&logo=typescript&logoColor=3178C6" alt="TypeScript" /> <img src="https://img.shields.io/badge/JavaScript-2b3137?style=flat-square&logo=javascript&logoColor=F7DF1E" alt="JavaScript" /> <img src="https://img.shields.io/badge/R-2b3137?style=flat-square&logo=r&logoColor=276DC3" alt="R" /></td></tr>
+<tr><td><code>"genai"</code></td><td><img src="https://img.shields.io/badge/Amazon%20Bedrock-2b3137?style=flat-square" alt="Amazon Bedrock" /> <img src="https://img.shields.io/badge/Bedrock%20AgentCore-2b3137?style=flat-square" alt="Bedrock AgentCore" /> <img src="https://img.shields.io/badge/Strands%20Agents-2b3137?style=flat-square" alt="Strands Agents" /> <img src="https://img.shields.io/badge/LangGraph-2b3137?style=flat-square&logo=langgraph&logoColor=7FC8FF" alt="LangGraph" /> <img src="https://img.shields.io/badge/LangChain-2b3137?style=flat-square&logo=langchain&logoColor=7FC8FF" alt="LangChain" /> <img src="https://img.shields.io/badge/LlamaIndex-2b3137?style=flat-square" alt="LlamaIndex" /> <img src="https://img.shields.io/badge/Pydantic%20AI-2b3137?style=flat-square&logo=pydantic&logoColor=E92063" alt="Pydantic AI" /> <img src="https://img.shields.io/badge/MCP-2b3137?style=flat-square&logo=modelcontextprotocol&logoColor=ffffff" alt="MCP" /> <img src="https://img.shields.io/badge/OpenAI%20API-2b3137?style=flat-square" alt="OpenAI API" /> <img src="https://img.shields.io/badge/Anthropic%20API-2b3137?style=flat-square&logo=anthropic&logoColor=ffffff" alt="Anthropic API" /> <img src="https://img.shields.io/badge/OpenRouter-2b3137?style=flat-square&logo=openrouter&logoColor=94A3B8" alt="OpenRouter" /> <img src="https://img.shields.io/badge/Hugging%20Face-2b3137?style=flat-square&logo=huggingface&logoColor=FFD21E" alt="Hugging Face" /> <img src="https://img.shields.io/badge/LangSmith-2b3137?style=flat-square&logo=langchain&logoColor=7FC8FF" alt="LangSmith" /></td></tr>
+<tr><td><code>"ml"</code></td><td><img src="https://img.shields.io/badge/PyTorch-2b3137?style=flat-square&logo=pytorch&logoColor=EE4C2C" alt="PyTorch" /> <img src="https://img.shields.io/badge/TensorFlow-2b3137?style=flat-square&logo=tensorflow&logoColor=FF6F00" alt="TensorFlow" /> <img src="https://img.shields.io/badge/Keras-2b3137?style=flat-square&logo=keras&logoColor=ffffff" alt="Keras" /> <img src="https://img.shields.io/badge/scikit--learn-2b3137?style=flat-square&logo=scikitlearn&logoColor=F7931E" alt="scikit-learn" /> <img src="https://img.shields.io/badge/XGBoost-2b3137?style=flat-square" alt="XGBoost" /> <img src="https://img.shields.io/badge/pandas-2b3137?style=flat-square&logo=pandas&logoColor=ffffff" alt="pandas" /> <img src="https://img.shields.io/badge/NumPy-2b3137?style=flat-square&logo=numpy&logoColor=ffffff" alt="NumPy" /></td></tr>
+<tr><td><code>"aws"</code></td><td><img src="https://img.shields.io/badge/Lambda-2b3137?style=flat-square" alt="Lambda" /> <img src="https://img.shields.io/badge/S3-2b3137?style=flat-square" alt="S3" /> <img src="https://img.shields.io/badge/SageMaker-2b3137?style=flat-square" alt="SageMaker" /> <img src="https://img.shields.io/badge/Redshift-2b3137?style=flat-square" alt="Redshift" /> <img src="https://img.shields.io/badge/Glue-2b3137?style=flat-square" alt="Glue" /> <img src="https://img.shields.io/badge/Step%20Functions-2b3137?style=flat-square" alt="Step Functions" /> <img src="https://img.shields.io/badge/DynamoDB-2b3137?style=flat-square" alt="DynamoDB" /> <img src="https://img.shields.io/badge/CloudWatch-2b3137?style=flat-square" alt="CloudWatch" /> <img src="https://img.shields.io/badge/CDK-2b3137?style=flat-square" alt="CDK" /></td></tr>
+<tr><td><code>"data"</code></td><td><img src="https://img.shields.io/badge/PostgreSQL-2b3137?style=flat-square&logo=postgresql&logoColor=4169E1" alt="PostgreSQL" /> <img src="https://img.shields.io/badge/pgvector-2b3137?style=flat-square" alt="pgvector" /> <img src="https://img.shields.io/badge/MySQL-2b3137?style=flat-square&logo=mysql&logoColor=4479A1" alt="MySQL" /> <img src="https://img.shields.io/badge/BigQuery-2b3137?style=flat-square&logo=googlebigquery&logoColor=669DF6" alt="BigQuery" /> <img src="https://img.shields.io/badge/DuckDB-2b3137?style=flat-square&logo=duckdb&logoColor=FFF000" alt="DuckDB" /> <img src="https://img.shields.io/badge/PySpark-2b3137?style=flat-square&logo=apachespark&logoColor=E25A1C" alt="PySpark" /> <img src="https://img.shields.io/badge/Tableau-2b3137?style=flat-square" alt="Tableau" /> <img src="https://img.shields.io/badge/Power%20BI-2b3137?style=flat-square" alt="Power BI" /></td></tr>
+<tr><td><code>"ship"</code></td><td><img src="https://img.shields.io/badge/FastAPI-2b3137?style=flat-square&logo=fastapi&logoColor=009688" alt="FastAPI" /> <img src="https://img.shields.io/badge/Docker-2b3137?style=flat-square&logo=docker&logoColor=2496ED" alt="Docker" /> <img src="https://img.shields.io/badge/GitHub%20Actions-2b3137?style=flat-square&logo=githubactions&logoColor=2088FF" alt="GitHub Actions" /> <img src="https://img.shields.io/badge/Terraform-2b3137?style=flat-square&logo=terraform&logoColor=844FBA" alt="Terraform" /> <img src="https://img.shields.io/badge/Cloudflare%20Workers-2b3137?style=flat-square&logo=cloudflare&logoColor=F38020" alt="Cloudflare Workers" /> <img src="https://img.shields.io/badge/Streamlit-2b3137?style=flat-square&logo=streamlit&logoColor=FF4B4B" alt="Streamlit" /> <img src="https://img.shields.io/badge/Git-2b3137?style=flat-square&logo=git&logoColor=F03C2E" alt="Git" /> <img src="https://img.shields.io/badge/Jira-2b3137?style=flat-square&logo=jira&logoColor=0052CC" alt="Jira" /></td></tr>
+</table>
 
-## Tech stack
+<a name="certs"></a>
 
-| | |
-| --- | --- |
-| **Languages** | ![Python](https://img.shields.io/badge/Python-2b3137?style=flat-square&logo=python&logoColor=3776AB) ![SQL](https://img.shields.io/badge/SQL-2b3137?style=flat-square) ![TypeScript](https://img.shields.io/badge/TypeScript-2b3137?style=flat-square&logo=typescript&logoColor=3178C6) ![JavaScript](https://img.shields.io/badge/JavaScript-2b3137?style=flat-square&logo=javascript&logoColor=F7DF1E) ![Java](https://img.shields.io/badge/Java-2b3137?style=flat-square&logo=openjdk&logoColor=ffffff) ![C++](https://img.shields.io/badge/C%2B%2B-2b3137?style=flat-square&logo=cplusplus&logoColor=00599C) ![R](https://img.shields.io/badge/R-2b3137?style=flat-square&logo=r&logoColor=276DC3) |
-| **GenAI and agents** | ![Amazon Bedrock](https://img.shields.io/badge/Amazon%20Bedrock-2b3137?style=flat-square) ![Bedrock AgentCore](https://img.shields.io/badge/Bedrock%20AgentCore-2b3137?style=flat-square) ![Strands Agents](https://img.shields.io/badge/Strands%20Agents-2b3137?style=flat-square) ![LangChain](https://img.shields.io/badge/LangChain-2b3137?style=flat-square&logo=langchain&logoColor=7FC8FF) ![LangGraph](https://img.shields.io/badge/LangGraph-2b3137?style=flat-square&logo=langgraph&logoColor=7FC8FF) ![LlamaIndex](https://img.shields.io/badge/LlamaIndex-2b3137?style=flat-square) ![Pydantic AI](https://img.shields.io/badge/Pydantic%20AI-2b3137?style=flat-square&logo=pydantic&logoColor=E92063) ![MCP](https://img.shields.io/badge/MCP-2b3137?style=flat-square&logo=modelcontextprotocol&logoColor=ffffff) ![OpenAI API](https://img.shields.io/badge/OpenAI%20API-2b3137?style=flat-square) ![Anthropic API](https://img.shields.io/badge/Anthropic%20API-2b3137?style=flat-square&logo=anthropic&logoColor=ffffff) ![Hugging Face](https://img.shields.io/badge/Hugging%20Face-2b3137?style=flat-square&logo=huggingface&logoColor=FFD21E) |
-| **ML** | ![PyTorch](https://img.shields.io/badge/PyTorch-2b3137?style=flat-square&logo=pytorch&logoColor=EE4C2C) ![TensorFlow](https://img.shields.io/badge/TensorFlow-2b3137?style=flat-square&logo=tensorflow&logoColor=FF6F00) ![Keras](https://img.shields.io/badge/Keras-2b3137?style=flat-square&logo=keras&logoColor=ffffff) ![scikit-learn](https://img.shields.io/badge/scikit--learn-2b3137?style=flat-square&logo=scikitlearn&logoColor=F7931E) ![XGBoost](https://img.shields.io/badge/XGBoost-2b3137?style=flat-square) |
-| **AWS and cloud** | ![Lambda](https://img.shields.io/badge/Lambda-2b3137?style=flat-square) ![S3](https://img.shields.io/badge/S3-2b3137?style=flat-square) ![Redshift](https://img.shields.io/badge/Redshift-2b3137?style=flat-square) ![SageMaker](https://img.shields.io/badge/SageMaker-2b3137?style=flat-square) ![DynamoDB](https://img.shields.io/badge/DynamoDB-2b3137?style=flat-square) ![Glue](https://img.shields.io/badge/Glue-2b3137?style=flat-square) ![CloudWatch](https://img.shields.io/badge/CloudWatch-2b3137?style=flat-square) ![CDK](https://img.shields.io/badge/CDK-2b3137?style=flat-square) ![Terraform](https://img.shields.io/badge/Terraform-2b3137?style=flat-square&logo=terraform&logoColor=844FBA) ![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-2b3137?style=flat-square&logo=cloudflare&logoColor=F38020) |
-| **Data** | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-2b3137?style=flat-square&logo=postgresql&logoColor=4169E1) ![MySQL](https://img.shields.io/badge/MySQL-2b3137?style=flat-square&logo=mysql&logoColor=4479A1) ![BigQuery](https://img.shields.io/badge/BigQuery-2b3137?style=flat-square&logo=googlebigquery&logoColor=669DF6) ![DuckDB](https://img.shields.io/badge/DuckDB-2b3137?style=flat-square&logo=duckdb&logoColor=FFF000) ![pandas](https://img.shields.io/badge/pandas-2b3137?style=flat-square&logo=pandas&logoColor=ffffff) ![NumPy](https://img.shields.io/badge/NumPy-2b3137?style=flat-square&logo=numpy&logoColor=ffffff) ![Tableau](https://img.shields.io/badge/Tableau-2b3137?style=flat-square) ![Power BI](https://img.shields.io/badge/Power%20BI-2b3137?style=flat-square) |
-| **Tools** | ![Git](https://img.shields.io/badge/Git-2b3137?style=flat-square&logo=git&logoColor=F03C2E) ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2b3137?style=flat-square&logo=githubactions&logoColor=2088FF) ![Docker](https://img.shields.io/badge/Docker-2b3137?style=flat-square&logo=docker&logoColor=2496ED) ![FastAPI](https://img.shields.io/badge/FastAPI-2b3137?style=flat-square&logo=fastapi&logoColor=009688) ![Streamlit](https://img.shields.io/badge/Streamlit-2b3137?style=flat-square&logo=streamlit&logoColor=FF4B4B) ![Jira](https://img.shields.io/badge/Jira-2b3137?style=flat-square&logo=jira&logoColor=0052CC) |
+### `$ ls certs/`
 
-## Certifications
+<a href="https://www.credly.com/badges/ea88a163-447c-49b2-9962-5b959e9258f5"><img src="https://img.shields.io/badge/AWS-ML%20Engineer%20Associate%20·%202026-2b3137?style=flat-square" alt="AWS Certified Machine Learning Engineer, Associate, 2026" /></a>
+<a href="https://www.credly.com/badges/4d78e824-4a6f-4dbe-aa84-bbd9d43fe99c"><img src="https://img.shields.io/badge/AWS-Data%20Engineer%20Associate%20·%202024-2b3137?style=flat-square" alt="AWS Certified Data Engineer, Associate, 2024" /></a>
+<a href="https://www.credly.com/badges/34216190-94e5-4580-a564-934ccaf38586"><img src="https://img.shields.io/badge/AWS-Solutions%20Architect%20Associate%20·%202024-2b3137?style=flat-square" alt="AWS Certified Solutions Architect, Associate, 2024" /></a>
 
-- [AWS Certified Machine Learning Engineer - Associate](https://www.credly.com/badges/ea88a163-447c-49b2-9962-5b959e9258f5), Mar 2026
-- [AWS Certified Data Engineer - Associate](https://www.credly.com/badges/4d78e824-4a6f-4dbe-aa84-bbd9d43fe99c), Nov 2024
-- [AWS Certified Solutions Architect - Associate](https://www.credly.com/badges/34216190-94e5-4580-a564-934ccaf38586), Jul 2024
+### `$ cat FAQ.md`
 
-## Publication
+<details>
+<summary><b>Frequently unasked questions</b></summary>
+<br/>
 
-Teitelbaum, E., Shaik, M.B., & Sharma, S.C. (2026). [The Limits and Promise of Automated Event Coding: Evidence from the South Asia Terrorism Portal](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6163986). SSRN. LLM and encoder-transformer benchmarking for multi-label political event attribution, with an evaluation methodology.
+**Is this README written by AI?**<br/>
+The greeting up top is, by my own API. The jokes are mine, so complaints come to me.
 
-## Photography
+**Can your agents delete prod?**<br/>
+They can ask. A guardrail says no every time, and it is not polite about it.
 
-When I'm not building I take photos. They're on Instagram at [@mylenspeak](https://instagram.com/mylenspeak).
+**RAG or fine-tuning?**<br/>
+Whichever one wins the eval. I stopped arguing with the scoreboard.
+
+**What happens when the evals fail?**<br/>
+Nothing ships, and I go find out why. Usually it was me.
+
+**Why photography?**<br/>
+A camera has no context window to run out of.
+
+</details>
 
 <div align="center">
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/output/github-snake.svg" />
-  <img alt="Snake animation eating my contribution graph" src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/output/github-snake.svg" />
-</picture>
-
+<sub>📷 off duty at <a href="https://instagram.com/mylenspeak">@mylenspeak</a> · greeting written daily by <a href="https://getmeme.warmhop.com">getmeme</a></sub>
 </div>
