@@ -30,11 +30,11 @@ jobs:
       - name: Building right now, and the contribution calendar
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          # Read-only tokens and the private-repo labels. All three are repo secrets,
-          # so private repo names never appear in this public repo.
+          # Read-only tokens (secrets) and the public names for private repos (a variable).
+          # The variable shows up in these public logs, so its keys are hashes, never repo names.
           PROFILE_READ_TOKEN: ${{ secrets.PROFILE_READ_TOKEN }}
           ORG_READ_TOKEN: ${{ secrets.ORG_READ_TOKEN }}
-          CURRENTLY_PRIVATE: ${{ secrets.CURRENTLY_PRIVATE }}
+          CURRENTLY_PRIVATE: ${{ vars.CURRENTLY_PRIVATE || secrets.CURRENTLY_PRIVATE }}
           GREETING_TZ: ${{ vars.GREETING_TZ }}
         # Once a day: the first run from 10:00 UTC whose calendar doesn't show today yet.
         # The window runs to 13:59 because scheduled runs are sometimes late. Manual runs always redraw.
@@ -60,4 +60,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Refresh greeting, project cards and calendar"
+          # A merge can land on main while this runs; replay on top of it instead of failing.
+          git pull --rebase --quiet origin "$GITHUB_REF_NAME"
           git push
