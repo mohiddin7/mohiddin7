@@ -91,7 +91,7 @@ Also: [the paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6163986) �
 - **IndexCase**: Threat intelligence for AI agents that traces how prompt injection spreads, in design
 <!-- CURRENTLY:END -->
 
-<sub>Rebuilt every morning from my latest commits. I don't touch it.</sub>
+<sub>Rebuilt every hour from my commits on every branch, personal and org repos. 🟢 this week, 🟡 lately, ⚪ resting. I don't touch it.</sub>
 
 ### `$ cat stack.json`
 
@@ -149,7 +149,7 @@ A camera has no context window to run out of.
 <br/>
 
 - **The greeting** is written by [getmeme](https://getmeme.warmhop.com), my own API. It changes with my time of day (US Eastern) and with your GitHub theme, dark or light. If the API is having a moment, a line I wrote fills in.
-- **`git log`** rebuilds every morning from my latest commits. Private projects show up under their public names.
+- **`git log`** rebuilds every hour from my commits across my own and my org's repos, private ones included. Private projects show up under their public names, and anything without one yet is just "under wraps".
 - **The calendar** is redrawn every morning from my public contribution data, with the numbers printed on it. A snake eats every square I earned that year, then it all grows back.
 
 </details>
