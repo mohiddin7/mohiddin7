@@ -6,11 +6,11 @@
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&duration=2800&pause=900&color=58A6FF&center=true&vCenter=true&width=560&height=40&lines=hey.+you+found+my+profile.;i+build+RAG+pipelines+and+AI+agents;and+evals%2C+so+they+behave;currently+arguing+with+a+model+about+JSON;yes%2C+i+also+take+photos" alt="hey. you found my profile. i build RAG pipelines and AI agents, and evals, so they behave." />
 
-<!-- GREETING:START daypart=night date=2026-10-17 -->
+<!-- GREETING:START daypart=morning date=2026-10-18 -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-dark.svg?v=2026-10-17-night" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-light.svg?v=2026-10-17-night" />
-  <img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-light.svg?v=2026-10-17-night" alt="It&#x27;s late night here, and you brought light mode. Bold." />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-dark.svg?v=2026-10-18-morning" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-light.svg?v=2026-10-18-morning" />
+  <img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-light.svg?v=2026-10-18-morning" alt="Morning, coffee is still compiling. Light mode is the default, just like my will to debug." />
 </picture>
 <a href="#how-this-page-works" title="Written by getmeme for my time of day and your GitHub theme">ⓘ</a>
 <!-- GREETING:END -->
@@ -22,9 +22,9 @@
 <a href="https://github.com/mohiddin7/adpilot/blob/main/evals/reports/latest.md"><img src="https://img.shields.io/badge/adpilot%20evals-89.8%2F100-2b3137?style=flat-square" alt="adpilot evals 89.8 out of 100" /></a>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-dark.svg?v=e395dac1ab" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg?v=e395dac1ab" />
-  <img alt="My GitHub contribution calendar for the last year, with monthly counts, busiest day, streaks and active days, and a blue snake eating it" src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg?v=e395dac1ab" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-dark.svg?v=f24d9b5250" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg?v=f24d9b5250" />
+  <img alt="My GitHub contribution calendar for the last year, with monthly counts, busiest day, streaks and active days, and a blue snake eating it" src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg?v=f24d9b5250" />
 </picture>
 
 
@@ -35,12 +35,13 @@ I'm an AI engineer. I build production RAG pipelines, AI agents, and the LLM eva
 ### 🔨 What I'm building right now
 
 <!-- CURRENTLY:START -->
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-1-dark.svg?v=5e73034c52" /><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-1-light.svg?v=62a34ae72d" /><img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-1-light.svg?v=62a34ae72d" width="100%" alt="IndexCase: Threat intelligence for AI agents that traces how prompt injection spreads, in build 41 commits in the last 2 weeks, latest yesterday. Python" /></picture>
-<a href="https://warmhop.com/try"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-2-dark.svg?v=69eaa10486" /><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-2-light.svg?v=31b2f7162c" /><img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-2-light.svg?v=31b2f7162c" width="100%" alt="warmhop Link Tracker: A link tracker for job seekers: put it on your resume and see when someone clicks 74 commits in the last 2 weeks, latest yesterday. TypeScript" /></picture></a>
-<a href="https://github.com/mohiddin7/adpilot"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-3-dark.svg?v=c5057e5961" /><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-3-light.svg?v=0fa17263a4" /><img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-3-light.svg?v=0fa17263a4" width="100%" alt="adpilot: AI analyst for ad spend: ask in plain English, get guarded SQL, answers and charts 52 commits in the last 2 weeks, latest 3 days ago: evals: nightly scorecard. Python" /></picture></a>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-4-dark.svg?v=5a282435f9" /><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-4-light.svg?v=1c7824f1f7" /><img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-4-light.svg?v=1c7824f1f7" width="100%" alt="4 things under wraps: No name yet, no screenshots, just commits. 63 commits in the last 2 weeks, latest yesterday. Python" /></picture>
+<a href="https://github.com/mohiddin7/resume-tribunal"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-1-dark.svg?v=e8dd5a7c07" /><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-1-light.svg?v=b6f3b36773" /><img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-1-light.svg?v=b6f3b36773" width="100%" alt="resume-tribunal: Tailor your resume to a job description with AI, reviewed blind by an AI from a different company 74 commits in the last 2 weeks, latest yesterday: README shows the website&#x27;s How it works player. Python" /></picture></a>
+<picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-2-dark.svg?v=0992008b4d" /><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-2-light.svg?v=d3f3b34253" /><img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-2-light.svg?v=d3f3b34253" width="100%" alt="IndexCase: Threat intelligence for AI agents that traces how prompt injection spreads, in build 41 commits in the last 2 weeks, latest 2 days ago. Python" /></picture>
+<a href="https://warmhop.com/try"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-3-dark.svg?v=96064098de" /><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-3-light.svg?v=5983a185f9" /><img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-3-light.svg?v=5983a185f9" width="100%" alt="warmhop Link Tracker: A link tracker for job seekers: put it on your resume and see when someone clicks 74 commits in the last 2 weeks, latest 2 days ago. TypeScript" /></picture></a>
+<a href="https://github.com/mohiddin7/adpilot"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-4-dark.svg?v=8a04e62864" /><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-4-light.svg?v=0a6d2d2a25" /><img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-4-light.svg?v=0a6d2d2a25" width="100%" alt="adpilot: AI analyst for ad spend: ask in plain English, get guarded SQL, answers and charts 52 commits in the last 2 weeks, latest 4 days ago: evals: nightly scorecard. Python" /></picture></a>
+<picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-5-dark.svg?v=17d9d8a313" /><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-5-light.svg?v=99144ec6fd" /><img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-5-light.svg?v=99144ec6fd" width="100%" alt="4 things under wraps: No name yet, no screenshots, just commits. 22 commits in the last 2 weeks, latest yesterday. Python" /></picture>
 
-<sub>Updated Oct 17, 2026. A script reads my commits every morning, private repos included, and draws these. If a card says active, I really was in there this week.</sub>
+<sub>Updated Oct 18, 2026. A script reads my commits every morning, private repos included, and draws these. If a card says active, I really was in there this week.</sub>
 <!-- CURRENTLY:END -->
 
 ### `$ whoami`
