@@ -6,11 +6,11 @@
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&duration=2800&pause=900&color=58A6FF&center=true&vCenter=true&width=560&height=40&lines=hey.+you+found+my+profile.;i+build+RAG+pipelines+and+AI+agents;and+evals%2C+so+they+behave;currently+arguing+with+a+model+about+JSON;yes%2C+i+also+take+photos" alt="hey. you found my profile. i build RAG pipelines and AI agents, and evals, so they behave." />
 
-<!-- GREETING:START daypart=morning date=2026-10-19 -->
+<!-- GREETING:START daypart=evening date=2026-10-19 -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-dark.svg?v=2026-10-19-morning" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-light.svg?v=2026-10-19-morning" />
-  <img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-light.svg?v=2026-10-19-morning" alt="Morning here. Bold of you to read this in light mode." />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-dark.svg?v=2026-10-19-evening" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-light.svg?v=2026-10-19-evening" />
+  <img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-light.svg?v=2026-10-19-evening" alt="Evening here. I should stop coding. I won&#x27;t." />
 </picture>
 <a href="#how-this-page-works" title="Written by getmeme for my time of day and your GitHub theme">ⓘ</a>
 <!-- GREETING:END -->
