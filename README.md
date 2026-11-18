@@ -6,11 +6,11 @@
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&duration=2800&pause=900&color=58A6FF&center=true&vCenter=true&width=560&height=40&lines=hey.+you+found+my+profile.;i+build+RAG+pipelines+and+AI+agents;and+evals%2C+so+they+behave;currently+arguing+with+a+model+about+JSON;yes%2C+i+also+take+photos" alt="hey. you found my profile. i build RAG pipelines and AI agents, and evals, so they behave." />
 
-<!-- GREETING:START daypart=night date=2026-11-17 -->
+<!-- GREETING:START daypart=morning date=2026-11-18 -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-dark.svg?v=2026-11-17-night" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-light.svg?v=2026-11-17-night" />
-  <img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-light.svg?v=2026-11-17-night" alt="Hope your screen is brighter than my current debug session. Still up I see." />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-dark.svg?v=2026-11-18-morning" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-light.svg?v=2026-11-18-morning" />
+  <img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/greeting-light.svg?v=2026-11-18-morning" alt="Morning here, coffee still loading. Thanks for visiting in light mode, brave soul." />
 </picture>
 <a href="#how-this-page-works" title="Written by getmeme for my time of day and your GitHub theme">ⓘ</a>
 <!-- GREETING:END -->
@@ -22,9 +22,9 @@
 <a href="https://github.com/mohiddin7/adpilot/blob/main/evals/reports/latest.md"><img src="https://img.shields.io/badge/adpilot%20evals-89.8%2F100-2b3137?style=flat-square" alt="adpilot evals 89.8 out of 100" /></a>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-dark.svg?v=11d50ccc29" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg?v=11d50ccc29" />
-  <img alt="My GitHub contribution calendar for the last year, with monthly counts, busiest day, streaks and active days, and a blue snake eating it" src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg?v=11d50ccc29" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-dark.svg?v=20d3a9dfd7" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg?v=20d3a9dfd7" />
+  <img alt="My GitHub contribution calendar for the last year, with monthly counts, busiest day, streaks and active days, and a blue snake eating it" src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/calendar-light.svg?v=20d3a9dfd7" />
 </picture>
 
 
@@ -35,12 +35,12 @@ I'm an AI engineer. I build production RAG pipelines, AI agents, and the LLM eva
 ### 🔨 What I'm building right now
 
 <!-- CURRENTLY:START -->
-<a href="https://warmhop.com/try"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-1-dark.svg?v=b3474a5dac" /><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-1-light.svg?v=5b5c331f4b" /><img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-1-light.svg?v=5b5c331f4b" width="100%" alt="warmhop Link Tracker: A link tracker for job seekers: put it on your resume and see when someone clicks 56 commits in the last 2 weeks, latest today. TypeScript" /></picture></a>
+<a href="https://warmhop.com/try"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-1-dark.svg?v=bdce172021" /><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-1-light.svg?v=6a55ebb4c2" /><img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-1-light.svg?v=6a55ebb4c2" width="100%" alt="warmhop Link Tracker: A link tracker for job seekers: put it on your resume and see when someone clicks 48 commits in the last 2 weeks, latest yesterday. TypeScript" /></picture></a>
 <a href="https://github.com/mohiddin7/adpilot"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-2-dark.svg?v=3c7be8f94d" /><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-2-light.svg?v=e84fde5caf" /><img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-2-light.svg?v=e84fde5caf" width="100%" alt="adpilot: AI analyst for ad spend: ask in plain English, get guarded SQL, answers and charts 1 commits in the last 2 weeks, latest today: evals: nightly scorecard. Python" /></picture></a>
-<a href="https://github.com/mohiddin7/valence-j-split"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-3-dark.svg?v=e0ad63c1f8" /><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-3-light.svg?v=397c7fb124" /><img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-3-light.svg?v=397c7fb124" width="100%" alt="valence-j-split: Does the part of a valence state that a language model can put into words drive its choices? 1 commits in the last 2 weeks, latest 3 days ago: Protocol, passage corpus, and stages 0 and 1 (no steering). Python" /></picture></a>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-4-dark.svg?v=86d9bce2b9" /><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-4-light.svg?v=c4dee39102" /><img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-4-light.svg?v=c4dee39102" width="100%" alt="3 things under wraps: No name yet, no screenshots, just commits. 232 commits in the last 2 weeks, latest yesterday. Python, TypeScript" /></picture>
+<a href="https://github.com/mohiddin7/valence-j-split"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-3-dark.svg?v=7292fd4917" /><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-3-light.svg?v=36e429b36f" /><img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-3-light.svg?v=36e429b36f" width="100%" alt="valence-j-split: Does the part of a valence state that a language model can put into words drive its choices? 1 commits in the last 2 weeks, latest 4 days ago: Protocol, passage corpus, and stages 0 and 1 (no steering). Python" /></picture></a>
+<picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-4-dark.svg?v=18e9fc3f33" /><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-4-light.svg?v=1d5d9d139b" /><img src="https://raw.githubusercontent.com/mohiddin7/mohiddin7/main/assets/now-4-light.svg?v=1d5d9d139b" width="100%" alt="3 things under wraps: No name yet, no screenshots, just commits. 235 commits in the last 2 weeks, latest today. Python, TypeScript" /></picture>
 
-<sub>Updated Nov 17, 2026. A script reads my commits every morning, private repos included, and draws these. If a card says active, I really was in there this week.</sub>
+<sub>Updated Nov 18, 2026. A script reads my commits every morning, private repos included, and draws these. If a card says active, I really was in there this week.</sub>
 <!-- CURRENTLY:END -->
 
 ### `$ whoami`
